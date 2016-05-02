@@ -192,7 +192,7 @@ function updateTask(event, task_id) {
                 success: function (data, status) {
                     // update the list of printed tasks: called when the DELETE is complete
                     update_task_table();
-                    
+
                     //reset label, textbox, and checkbox for insertion
                     $("label[for='inputdescription']").html('Insert a new task');
                     $("input[name='urgent']").prop("checked",false);

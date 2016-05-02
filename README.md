@@ -62,6 +62,7 @@ It provides basic support for showing and creating tasks.
 }
 ```
 
+
 **Url:** /api/v1.0/tasks/:task_id
 
 **Method:** GET - Retrieve the task identified by the given *task_id* (an integer number)
@@ -77,3 +78,23 @@ It provides basic support for showing and creating tasks.
   }
 }
 ```
+
+
+**Url:** /api/v1.0/tasks/:task_id
+
+**Method:** PUT - Update a task
+
+**Parameters**: description, urgent
+
+**Example**:
+
+```
+{
+	"description" : "This is an updated task",
+	"urgent" : 0
+}
+```
+
+**Url:** /api/v1.0/tasks/:task_id
+
+**Method:** DELETE - Delete a task
