@@ -17,7 +17,10 @@ limitations under the License
 """
 
 import sqlite3
+import os
 
+dirpath = os.path.dirname(__file__)
+sqlPath = os.path.join(dirpath, "db/task_list.db")
 
 def insert_task(text, urgent):
     """
@@ -31,7 +34,7 @@ def insert_task(text, urgent):
     sql = """INSERT INTO task(todo, urgent) VALUES (?, ?)"""
 
     # connect to the db
-    conn = sqlite3.connect("db/task_list.db")
+    conn = sqlite3.connect(sqlPath)
     cursor = conn.cursor()
 
     try:
@@ -55,7 +58,7 @@ def get_tasks():
 
     tasks = []
     sql = "SELECT id_task, todo, urgent  FROM task"
-    conn = sqlite3.connect("db/task_list.db")
+    conn = sqlite3.connect(sqlPath)
 
     # to remove u from sqlite3 cursor.fetchall() results
     conn.text_factory = sqlite3.OptimizedUnicode
@@ -84,7 +87,7 @@ def get_task(id_task):
     sql = "SELECT id_task, todo, urgent FROM task WHERE id_task = ?"
 
     # connect to the db
-    conn = sqlite3.connect("db/task_list.db")
+    conn = sqlite3.connect(sqlPath)
 
     # to remove u from sqlite3 cursor.fetchall() results
     conn.text_factory = sqlite3.OptimizedUnicode
@@ -111,7 +114,7 @@ def remove_task_by_id(id_task):
     sql = "DELETE FROM task WHERE id_task = ?"
 
     # connect to the db
-    conn = sqlite3.connect("db/task_list.db")
+    conn = sqlite3.connect(sqlPath)
     cursor = conn.cursor()
 
     try:
@@ -141,7 +144,7 @@ def update_task(id_task, text, urgent):
     sql = """UPDATE task SET todo=?, urgent=? WHERE id_task = ?"""
 
     # connect to the db
-    conn = sqlite3.connect("db/task_list.db")
+    conn = sqlite3.connect(sqlPath)
     cursor = conn.cursor()
 
     try:
